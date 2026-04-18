@@ -22,15 +22,29 @@
       
       #key{
         font-family: "Courier New";
-        color: #1a1a1a
+        color: #1a1a1a;
+        letter-spacing: 2px;
+        
       }
       #key::before{
         color: gray;
-        content: "[";
+        content: "[ ";
       }
       #key::after{
         color: gray;
-        content: "]";
+        content: " ]";
+      }
+      #answer{
+        background: transparent;
+        border: none;
+        border-bottom: 4px solid #dddddd;
+        color: gray;
+        font-size: 25px;
+        text-align: center;
+        width:350px;
+        padding: 5px;
+        outline: none;
+        font-family: "Courier New";
       }
         
     </style>
@@ -39,5 +53,7 @@
     <h1>CONNECTION REQUESTED</h1>
     <h3>PLEASE ENTER THE KEYCODE</h3>
     <p id="key">46524F4D20544845205354415254</p>
+    <input type="text" id="answer" placehloder="HEXA">
+    
   </body>
 </html>
