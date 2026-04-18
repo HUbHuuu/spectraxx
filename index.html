@@ -5,7 +5,6 @@
     <style>
       body{
         background: #111111;
-        color: white;
         text-align: center;
         margin-top: 200px;
         margin-bottom: 200px:
@@ -13,6 +12,7 @@
       
       h1{
         letter-spacing: 20px;
+        color: white;
       }
       
       h3{
@@ -21,7 +21,15 @@
       
       #key{
         font-family: "Courier New";
-        color: #111111
+        color: #222222
+      }
+      #key::before{
+        color: gray;
+        content: "[";
+      }
+      #key::after{
+        color: gray;
+        content: "]";
       }
         
     </style>
