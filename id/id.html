@@ -92,7 +92,7 @@
       <img src="id/IMG_5759.GIF" alt="enter">
     </button>
 
-    <video id="video" playsinline>
+    <video id="video" playsinline preload="auto">
       <source src="id/22696.MP4" type="video/mp4">
     </video>
   </div>
@@ -117,6 +117,7 @@
 
       button.style.display = "none";
       video.style.display = "block";
+      video.volume = 1;
       video.play();
     }
 
