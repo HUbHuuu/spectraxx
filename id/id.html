@@ -67,6 +67,7 @@
       left: 50%;
       transform: translate(-50%, -50%);
       letter-spacing: 4px;
+      background: transparent;
     }
 
     #countdown-title {
@@ -76,8 +77,10 @@
     }
 
     #countdown {
-      font-size: 40px;
+      font-size: 50px;
       color: white;
+      text-align: center;
+      
     }
   </style>
 </head>
@@ -89,14 +92,14 @@
       <img src="gate.png" alt="enter">
     </button>
 
-    <video id="teaser" playsinline>
+    <video id="video" playsinline>
       <source src="22696.mp4" type="video/mp4">
     </video>
   </div>
 
   <div id="countdown-screen">
     <div id="countdown-wrap">
-      <div id="countdown-title">RELEASE WINDOW OPENS IN</div>
+      <div id="countdown-title">INTERDIVING</div>
       <div id="countdown">Loading...</div>
     </div>
   </div>
@@ -107,7 +110,7 @@
     const countdownScreen = document.getElementById("countdown-screen");
     const countdownText = document.getElementById("countdown");
 
-    const releaseDate = new Date("2026-04-20T20:00:00").getTime();
+    const releaseDate = new Date("2026-06-01T20:00:00").getTime();
 
     function startTeaser() {
       const button = document.getElementById("start-button");
@@ -130,7 +133,7 @@
 
         if (distance <= 0) {
           clearInterval(timer);
-          countdownText.innerHTML = "RELEASED";
+          countdownText.innerHTML = "SPECTRAXX.PROJECT_OVERTURE<br>--link--";
           return;
         }
 
