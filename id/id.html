@@ -1,157 +1,32 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>//INTERDIVING//</title>
-
-  <style>
-    body {
-      margin: 0;
-      background: black;
-      color: white;
-      font-family: "Courier New", monospace, bold;
-      overflow: hidden;
-    }
-
-    #video-screen {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      background: black;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      z-index: 10;
-    }
-
-    #start-button {
-      position: absolute;
-      z-index: 20;
-      background: transparent;
-      border: none;
-      padding: 0;
-      cursor: pointer;
-      width: 525px;
-      height: 525px;
-    }
-
-    #start-button img {
-      width: 525px;
-      height: 525px;
-    }
-
-    #video {
-      display: none;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      background: black;
-    }
-
-    #countdown-screen {
-      display: none;
-      width: 100vw;
-      height: 100vh;
-      background: black;
-      color: white;
-      text-align: center;
-      position: fixed;
-      top: 0;
-      left: 0;
-    }
-
-    #countdown-wrap {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      letter-spacing: 4px;
-      background: transparent;
-    }
-
-    #countdown-title {
-      font-size: 18px;
-      color: #888;
-      margin-bottom: 25px;
-    }
-
-    #countdown {
-      font-size: 50px;
-      color: white;
-      text-align: center;
-      
-    }
-  </style>
-</head>
-
 <body>
 
-  <div id="video-screen">
-    <button id="start-button" onclick="startTeaser()">
-      <img src="test.webp" alt="enter">
-    </button>
+<div id="video-screen">
 
-    <video id="video" playsinline preload="auto">
-      <source src="testvideo.mp4" type="video/mp4">
-    </video>
-  </div>
+  <img 
+    src="test.webp"
+    style="
+      position: fixed;
+      top: 100px;
+      left: 100px;
+      width: 300px;
+      z-index: 99999;
+    "
+  >
 
-  <div id="countdown-screen">
-    <div id="countdown-wrap">
-      <div id="countdown-title">INTERDIVING</div>
-      <div id="countdown">Loading...</div>
-    </div>
-  </div>
+  <video
+    controls
+    style="
+      position: fixed;
+      top: 450px;
+      left: 100px;
+      width: 600px;
+      z-index: 99999;
+      display: block;
+    "
+  >
+    <source src="testvideo.mp4" type="video/mp4">
+  </video>
 
-  <script>
-    const video = document.getElementById("video");
-    const videoScreen = document.getElementById("video-screen");
-    const countdownScreen = document.getElementById("countdown-screen");
-    const countdownText = document.getElementById("countdown");
-
-    const releaseDate = new Date("2026-06-01T20:00:00").getTime();
-
-    function startTeaser() {
-      const button = document.getElementById("start-button");
-
-      button.style.display = "none";
-      video.style.display = "block";
-      video.volume = 1;
-      video.play();
-    }
-
-    video.onended = function () {
-      videoScreen.style.display = "none";
-      countdownScreen.style.display = "block";
-      startCountdown();
-    };
-
-    function startCountdown() {
-      const timer = setInterval(function () {
-        const now = new Date().getTime();
-        const distance = releaseDate - now;
-
-        if (distance <= 0) {
-          clearInterval(timer);
-          countdownText.innerHTML = "SPECTRAXX.PROJECT_OVERTURE<br>--link--";
-          return;
-        }
-
-        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-        countdownText.innerHTML =
-          String(days).padStart(2, "0") + " : " +
-          String(hours).padStart(2, "0") + " : " +
-          String(minutes).padStart(2, "0") + " : " +
-          String(seconds).padStart(2, "0");
-      }, 1000);
-    }
-  </script>
+</div>
 
 </body>
-</html>
