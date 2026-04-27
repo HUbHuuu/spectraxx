@@ -3,6 +3,21 @@
   <head>
     <title>SPECTRAXX.CONNECT</title>
     <style>
+      
+      #bg-video {
+        
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        object-fit: cover;
+        z-index: -10;
+        background: black;
+      }
+      #bg-audio {
+        display: none;
+      }
       body{
         background: #111111;
         text-align: center;
@@ -54,6 +69,13 @@
     </style>
   </head>
   <body>
+    <video id="bg-video" autoplay muted loop playsinline>
+      <source src="http://spectraxx.xyz/background.mp4" type="video/mp4">
+    </video>
+
+<audio id="bg-audio" autoplay loop>
+  <source src="http://spectraxx.xyz/background-noise.mp3" type="audio/mpeg">
+</audio>
     <h1>CONNECTION REQUESTED</h1>
     <h3>PLEASE ENTER THE KEYCODE</h3>
     <p id="key">46524F4D20544845205354415254</p>
