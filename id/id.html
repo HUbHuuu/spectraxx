@@ -154,6 +154,9 @@
   </div>
 
   <div id="countdown-screen">
+    <audio id="tminus-aud" loop>
+      <source src="https://spectraxx.xyz/background-noise.mp3" type="audio/mp3">
+    </audio>
     <div id="countdown-wrap">
       <div id="countdown-title">INTERDIVING</div>
       <div id="countdown">Loading...</div>
@@ -208,6 +211,7 @@
     mainVideo.onended = function () {
       videoScreen.style.display = "none";
       countdownScreen.style.display = "block";
+      document.getElementById("tminus-aud").play();
       startCountdown();
     };
 
@@ -218,7 +222,7 @@
 
         if (distance <= 0) {
           clearInterval(timer);
-          countdownText.innerHTML = "SPECTRAXX.PROJECT_OVERTURE<br>--link--";
+          countdownText.innerHTML = "SPECTRAXX.PROJECT_PRELUDE<br>--link--";
           return;
         }
 
