@@ -16,24 +16,8 @@
       overflow: hidden;
     }
 
-    #bg-video {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      object-fit: cover;
-      z-index: -10;
-      background: black;
-    }
-
-    #bg-audio {
-      display: none;
-    }
-
     #connect-screen {
       margin-top: 200px;
-      margin-bottom: 200px;
     }
 
     h1 {
@@ -46,7 +30,6 @@
     }
 
     #key {
-      font-family: "Courier New", monospace;
       color: #1a1a1a;
       letter-spacing: 2px;
     }
@@ -93,7 +76,23 @@
       z-index: 10;
     }
 
+    #loading-text {
+      position: absolute;
+      color: white;
+      font-size: 22px;
+      letter-spacing: 6px;
+      z-index: 50;
+      animation: flicker 1.2s infinite;
+    }
+
+    @keyframes flicker {
+      0% { opacity: 1; }
+      50% { opacity: 0.3; }
+      100% { opacity: 1; }
+    }
+
     #main-video {
+      display: none;
       width: 100%;
       height: 100%;
       object-fit: cover;
@@ -131,20 +130,12 @@
     #countdown {
       font-size: 50px;
       color: white;
-      text-align: center;
     }
   </style>
 </head>
 
 <body>
 
-  <video id="bg-video" autoplay muted loop playsinline>
-    <source src="https://spectraxx.xyz/background.mp4" type="video/mp4">
-  </video>
-
-  <audio id="bg-audio" loop>
-    <source src="https://spectraxx.xyz/background-noise.mp3" type="audio/mp3">
-  </audio>
 
   <div id="connect-screen">
     <h1>CONNECTION REQUESTED</h1>
@@ -155,7 +146,9 @@
   </div>
 
   <div id="video-screen">
-    <video id="main-video" playsinline preload="auto">
+    <div id="loading-text">PLEASE STANDBY...</div>
+
+    <video id="main-video" playsinline preload="none">
       <source src="https://spectraxx.xyz/Testvideo-24.mp4" type="video/mp4">
     </video>
   </div>
@@ -169,11 +162,9 @@
 
   <script>
     const connectScreen = document.getElementById("connect-screen");
-    const bgAudio = document.getElementById("bg-audio");
-
-    const mainVideo = document.getElementById("main-video");
     const videoScreen = document.getElementById("video-screen");
-
+    const mainVideo = document.getElementById("main-video");
+    const loadingText = document.getElementById("loading-text");
     const countdownScreen = document.getElementById("countdown-screen");
     const countdownText = document.getElementById("countdown");
 
@@ -198,9 +189,18 @@
           connectScreen.style.display = "none";
           videoScreen.style.display = "flex";
 
-          bgAudio.pause();
-          mainVideo.volume = 1;
-          mainVideo.play();
+          mainVideo.style.display = "block";
+          mainVideo.load();
+
+          mainVideo.play().then(() => {
+            loadingText.style.display = "none";
+          }).catch(() => {
+            loadingText.innerHTML = "CLICK TO INITIATE";
+            loadingText.onclick = function () {
+              mainVideo.play();
+              loadingText.style.display = "none";
+            };
+          });
         }
       }
     }
