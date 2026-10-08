@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>prelude</title>
+    <style>
+      body{
+        margin: 0;
+        background: #111111;
+        color: rgba(110, 110, 110, 0.938);
+        text-align: middle;
+        font-family: "Courier New"
+
+      }
+      
+        
+        
+    </style>
+  </head>
+  <body>
+      <audio id="background-noise" autoplay loop preload="auto">
+        <source src="https://spectraxx.xyz/background-noise.mp3" type="audio/mpeg">
+      </audio>
+      <h3>~ 00010000 ~ 00001001 ~ 00000001 ~ 00001110 ~ 00001111 ~</h3>
+      <h6>Find your /PATH/, find where is your next stop with the title </h6>
+      <script>
+        document.getElementById("background-noise").play().catch(() => {});
+      </script>
+    </body>
+  </html>
